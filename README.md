@@ -27,7 +27,9 @@ make
 ```
 # Execute o programa com:
 
-./restaurante
+```bash
+./atendimento
+```
 
 ## 📚 Tecnologias
 
