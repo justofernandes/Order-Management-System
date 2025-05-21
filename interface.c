@@ -18,7 +18,7 @@ void exibir_interface() {
                 do {
 
                     printf("\nEscolhido: Realizar o atendimento\n");
-                    printf("\nEscolha uma opcao: \n\n1. --------\n2. --------\n3. --------\n4. --------\n5. Voltar ao menu principal\n\n");
+                    printf("\nEscolha uma opcao: \n\n1. Adicionar prato\n2. Remover prato\n3. Mostrar pedido\n4. --------\n5. Voltar ao menu principal\n\n");
 
                     scanf("%d", &opc_submenu1);
 
@@ -54,7 +54,7 @@ void exibir_interface() {
 
                 do {
                     printf("\nEscolhido: Acessar Cozinha\n");
-                    printf("\nEscolha uma opcao: \n\n1. --------\n2. --------\n3. --------\n4. Voltar ao menu principal\n\n");
+                    printf("\nEscolha uma opcao: \n\n1. Exibir cozinha\n2. Processar pedido\n3. --------\n4. Voltar ao menu principal\n\n");
 
                     scanf("%d", &opc_submenu2);
 
