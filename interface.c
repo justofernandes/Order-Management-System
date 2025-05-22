@@ -4,7 +4,7 @@
 
 void exibir_interface() {
 
-    int opc_main_menu, opc_submenu1, opc_submenu2;
+    int opc_main_menu, opc_submenu1, opc_submenu2, opc_menu_cardapio;
 
     do { 
 
@@ -24,7 +24,35 @@ void exibir_interface() {
 
                     switch (opc_submenu1) {
                         case 1:
-                            printf("\nEscolhido opc: 1\n");
+                            printf("\nAdicionar prato\n");
+                            do{
+                                printf("\n1. Adicionar entrada\n2. Adicionar prato principal\n3. Adicionar sobremesa\n4. Voltar\n");
+
+                                scanf("%d", &opc_menu_cardapio);
+                                
+                                switch (opc_menu_cardapio) 
+                                {
+                                case 1:
+                                    printf("Entrada adicionada com sucesso!\n");
+                                    //exibir entradas
+                                    break;
+
+                                case 2:
+                                    printf("Prato principal adicionado com sucesso!\n");
+                                    //exibir pratos principais
+                                    break;
+
+                                case 3:
+                                    printf("Sobremesa adicionada com sucesso!a\n");
+                                    //exibir sobremesas
+                                    break;
+                                
+                                default:
+                                    printf("opc invalida!");
+                                }
+                                
+
+                            }while(opc_menu_cardapio != 4);
                             break;
 
                         case 2:
