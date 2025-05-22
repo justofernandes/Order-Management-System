@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "interface.h"  
+#include "cardapio.h"
 
 void exibir_interface() {
 
@@ -33,16 +34,29 @@ void exibir_interface() {
                                 switch (opc_menu_cardapio) 
                                 {
                                 case 1:
+                                    int e; //entrada para validação
+                                    exibir_entradas();
+                                    printf("\nSelecione uma entrada: \n");
+                                    scanf("%d", &e);
                                     printf("Entrada adicionada com sucesso!\n");
+                                    
                                     //exibir entradas
                                     break;
 
                                 case 2:
+                                    int f; //entrada para validação
+                                    exibir_pratos_principais();
+                                    printf("\nSelecione um prato principal: \n");
+                                    scanf("%d", &f);
                                     printf("Prato principal adicionado com sucesso!\n");
                                     //exibir pratos principais
                                     break;
 
                                 case 3:
+                                    int g; //entrada para validação
+                                    exibir_sobremesas();
+                                    printf("\nSelecione uma sobremesa: \n");
+                                    scanf("%d", &g);
                                     printf("Sobremesa adicionada com sucesso!a\n");
                                     //exibir sobremesas
                                     break;
