@@ -27,11 +27,22 @@ Pedido* desenfileirar(Fila *f) {
     return removido;
 }
 
-
 int filaVazia(Fila *f) {
     return f->inicio == NULL;
 }
 
+void listarFila(Fila f) {
+    Pedido *atual = f.inicio;
+    if (atual == NULL) {
+        printf("Nenhum pedido em processamento.\n");
+        return;
+    }
 
-
-//falta implementarmos alguma coisa para listarmos os pedidos, temos que pensar num identificador que voce vai colocar ai na lista
+    while (atual != NULL) {
+        printf("Número do pedido: %d\n", atual->num_pedido);
+        printf(" - Entrada: %s\n", atual->entrada);
+        printf(" - Principal: %s\n", atual->principal);
+        printf(" - Sobremesa: %s\n", atual->sobremesa);
+        atual = atual->prox;
+    }
+}
