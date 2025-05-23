@@ -1,11 +1,20 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <stdlib.h>
 #include "interface.h"  
 #include "cardapio.h"
+#include "lista.h"
+
+
+//void atendimento_pedidos();
+void limparBuffer(void);
 
 void exibir_interface() {
 
-    int opc_main_menu, opc_submenu1, opc_submenu2, opc_menu_cardapio;
+    int opc_main_menu, opc_submenu1, opc_submenu2, num_pedido;
+    
+    Pedido* lista_pedidos = NULL;
 
     do { 
 
@@ -16,57 +25,26 @@ void exibir_interface() {
 
         switch (opc_main_menu) {
             case 1:
+                printf("\nQual o numero do pedido?\n");
+                scanf("%d", &num_pedido);
                 do {
 
                     printf("\nEscolhido: Realizar o atendimento\n");
-                    printf("\nEscolha uma opcao: \n\n1. Adicionar prato\n2. Remover prato\n3. Mostrar pedido\n4. --------\n5. Voltar ao menu principal\n\n");
+                    printf("\nEscolha uma opcao: \n\n1. Adicionar prato\n2. Remover prato\n3. Mostrar pedido\n4. Finalizar pedido\n5. Voltar ao menu principal\n\n");
 
                     scanf("%d", &opc_submenu1);
 
                     switch (opc_submenu1) {
                         case 1:
                             printf("\nAdicionar prato\n");
-                            do{
-                                printf("\n1. Adicionar entrada\n2. Adicionar prato principal\n3. Adicionar sobremesa\n4. Voltar\n");
-
-                                scanf("%d", &opc_menu_cardapio);
-                                
-                                switch (opc_menu_cardapio) 
-                                {
-                                case 1:
-                                    int e; //entrada para validação
-                                    exibir_entradas();
-                                    printf("\nSelecione uma entrada: \n");
-                                    scanf("%d", &e);
-                                    printf("Entrada adicionada com sucesso!\n");
-                                    
-                                    //exibir entradas
-                                    break;
-
-                                case 2:
-                                    int f; //entrada para validação
-                                    exibir_pratos_principais();
-                                    printf("\nSelecione um prato principal: \n");
-                                    scanf("%d", &f);
-                                    printf("Prato principal adicionado com sucesso!\n");
-                                    //exibir pratos principais
-                                    break;
-
-                                case 3:
-                                    int g; //entrada para validação
-                                    exibir_sobremesas();
-                                    printf("\nSelecione uma sobremesa: \n");
-                                    scanf("%d", &g);
-                                    printf("Sobremesa adicionada com sucesso!a\n");
-                                    //exibir sobremesas
-                                    break;
-                                
-                                default:
-                                    printf("opc invalida!");
-                                }
-                                
-
-                            }while(opc_menu_cardapio != 4);
+                            exibir_cardapio();
+                            char nome_pedido[60];
+                            printf("\nInserir nome do pedido: \n");
+                            limparBuffer();
+                            fgets(nome_pedido, sizeof(nome_pedido), stdin);
+                            nome_pedido[strcspn(nome_pedido, "\n")] = '\0'; //Identifica se há quebra de liha. Caso houver, substitui pelo final da string.
+                            Prato prato_entrada = criar_prato(num_pedido, nome_pedido);
+                            inserir_no_inicio(&lista_pedidos, prato_entrada);
                             break;
 
                         case 2:
@@ -74,7 +52,8 @@ void exibir_interface() {
                             break;
 
                         case 3:
-                            printf("\nEscolhido opc: 3\n");
+                            exibir_lista(lista_pedidos);
+
                             break;
 
                         case 4:
@@ -134,4 +113,9 @@ void exibir_interface() {
 
     } while (opc_main_menu != 3);
 
+}
+
+void limparBuffer(void){
+    char c;
+    while ((c = getchar()) != '\n' && c != EOF);
 }
