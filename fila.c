@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "fila.h"
+#include "lista.h"
 
 void inicializarFila(Fila *f) {
     f->inicio = NULL;
@@ -39,10 +39,8 @@ void listarFila(Fila f) {
     }
 
     while (atual != NULL) {
-        printf("Número do pedido: %d\n", atual->num_pedido);
-        printf(" - Entrada: %s\n", atual->entrada);
-        printf(" - Principal: %s\n", atual->principal);
-        printf(" - Sobremesa: %s\n", atual->sobremesa);
+        printf("Número do pedido: %d\n", atual->num_pedido);    
+        printf("Descrição: %s\n", atual->pratos_texto);
         atual = atual->prox;
     }
 }
