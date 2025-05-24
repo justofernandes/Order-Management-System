@@ -9,9 +9,7 @@ typedef struct prato {
 } Prato;
 
 typedef struct Pedido {
-    int num_pedido;
     Prato *pratos;
-    char pratos_texto[300];
     struct Pedido *prox;
 } Pedido;
 

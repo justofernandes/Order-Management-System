@@ -9,12 +9,15 @@
 
 //void atendimento_pedidos();
 void limparBuffer(void);
-
+void enviar_lista(Pedido *lista, Fila *fila);
 void exibir_interface() {
 
     int opc_main_menu, opc_submenu1, opc_submenu2, num_pedido;
     
     Pedido* lista_pedidos = NULL;
+
+    Fila fila_cozinha;
+    inicializarFila(&fila_cozinha);
 
     do { 
 
@@ -57,7 +60,23 @@ void exibir_interface() {
                             break;
 
                         case 4:
-                            printf("\nEscolhido opc: 4\n");
+                            printf("\nFinalizando pedido e enviando para a cozinha...\n");
+                            enviar_lista(lista_pedidos, &fila_cozinha);
+                            while (lista_pedidos)
+                            {
+                               Pedido *temp = lista_pedidos;
+                               lista_pedidos = lista_pedidos ->prox;
+                               free(temp->pratos);
+                               free(temp);
+                            }
+                            printf("Pedido enviado com sucesso!\n");
+                            Pedido *temp;
+                            while (lista_pedidos != NULL) {
+                                temp = lista_pedidos;
+                                lista_pedidos = lista_pedidos->prox;
+                                free(temp->pratos);
+                                free(temp);
+                            }
                             break;
 
                         case 5:
@@ -82,6 +101,7 @@ void exibir_interface() {
                     switch (opc_submenu2) {
                         case 1:
                             printf("\nEscolhido opc: 1\n");
+                            listarFila(fila_cozinha);
                             break;
 
                         case 2:
@@ -118,4 +138,27 @@ void exibir_interface() {
 void limparBuffer(void){
     char c;
     while ((c = getchar()) != '\n' && c != EOF);
+}
+
+void enviar_lista(Pedido *lista, Fila *fila){
+    Pedido *atual = lista;
+    while (atual)
+    {
+       Pedido *novo= malloc(sizeof(Pedido));
+       if(novo){
+        novo->pratos= malloc(sizeof(Prato));
+        if(novo->pratos){
+            strcpy(novo->pratos->nome, atual->pratos->nome);
+            novo->pratos->num_pedido = atual->pratos->num_pedido;
+            novo->prox=NULL;
+            enfileirar(fila, novo);
+    
+        }else{
+            free(novo);
+        }
+        atual= atual->prox;
+       }
+
+    }
+    
 }

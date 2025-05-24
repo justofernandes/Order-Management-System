@@ -39,8 +39,12 @@ void listarFila(Fila f) {
     }
 
     while (atual != NULL) {
-        printf("Número do pedido: %d\n", atual->num_pedido);    
-        printf("Descrição: %s\n", atual->pratos_texto);
+        if (atual->pratos != NULL) {
+            printf("Número do pedido: %d\n", atual->pratos->num_pedido);
+            printf("Prato: %s\n", atual->pratos->nome);
+        } else {
+            printf("Pedido vazio.\n");
+        }
         atual = atual->prox;
     }
 }
