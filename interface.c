@@ -15,6 +15,7 @@ void exibir_interface() {
     int opc_main_menu, opc_submenu1, opc_submenu2, num_pedido;
     
     Pedido* lista_pedidos = NULL;
+    Pedido* pedidos_finalizados = NULL;
 
     Fila fila_cozinha;
     inicializarFila(&fila_cozinha);
@@ -51,7 +52,7 @@ void exibir_interface() {
                             fgets(nome_pedido, sizeof(nome_pedido), stdin);
                             nome_pedido[strcspn(nome_pedido, "\n")] = '\0'; //Identifica se há quebra de liha. Caso houver, substitui pelo final da string.
                            if(verificador_nome(nome_pedido)){
-                            Prato prato_entrada = criar_prato(&num_pedido, nome_pedido);
+                            Prato prato_entrada = criar_prato(num_pedido, nome_pedido);
                             inserir_no_inicio(&lista_pedidos, prato_entrada);
                            }
                             else{
@@ -61,14 +62,12 @@ void exibir_interface() {
                             break;
 
                         case 2:
-                            printf("\nEscolhido opc: 2\n");
+                            
                             break;
 
                         case 3:
-                            exibir_lista(lista_pedidos);
-
+                             exibir_lista(lista_pedidos);
                             break;
-
                         case 4:
                             printf("\nFinalizando pedido e enviando para a cozinha...\n");
                             enviar_lista(lista_pedidos, &fila_cozinha);
@@ -80,13 +79,7 @@ void exibir_interface() {
                                free(temp);
                             }
                             printf("Pedido enviado com sucesso!\n");
-                            Pedido *temp;
-                            while (lista_pedidos != NULL) {
-                                temp = lista_pedidos;
-                                lista_pedidos = lista_pedidos->prox;
-                                free(temp->pratos);
-                                free(temp);
-                            }
+                            
                             break;
 
                         case 5:
@@ -117,9 +110,19 @@ void exibir_interface() {
 
                         case 2:
                             printf("\nEscolhido opc: 2\n");
+                            printf("\nProcessando pedido...\n");
+                            Pedido *processado = desenfileirar(&fila_cozinha);
+                            if (processado != NULL) {
+                                printf("Pedido %d com prato %s foi processado.\n",
+                                    processado->pratos->num_pedido, processado->pratos->nome);
+                                adicionar_pedido_finalizado(&pedidos_finalizados, processado);
+                            } else {
+                                printf("Fila vazia.\n");
+                            }
                             break;
 
                         case 3:
+                            exibir_pedidos_finalizados(pedidos_finalizados);
                             printf("\nEscolhido opc: 3\n");
                             break;
 
