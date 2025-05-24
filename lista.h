@@ -17,5 +17,18 @@ void inserir_no_inicio(Pedido **lista, Prato p);
 void exibir_lista(Pedido *lista);
 Prato criar_prato(int id, const char* nome_prato);
 
+//fila
+
+typedef struct {
+    Pedido *inicio;
+    Pedido *fim;
+} Fila;
+
+void inicializarFila(Fila *f);
+void enfileirar(Fila *f, Pedido *p);
+Pedido* desenfileirar(Fila *f);
+int filaVazia(Fila *f);
+void listarFila(Fila f);
+
 
 #endif
