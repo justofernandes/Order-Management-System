@@ -1,19 +1,21 @@
+//#include <locale.h>
 #include "cardapio.h"
 #include <stdio.h>
 
 void exibir_cardapio() {
+    //setlocale(LC_ALL, "");
     printf("\n ======= Entradas ======= \n");
     printf("\n 1. Sopa de Cebola\n");
     printf(" 2. Salada Caesar\n");
     printf(" 3. Bruschetta\n");
     printf(" 4. Carpaccio de Carne\n");
-    printf(" 5. Camarão ao Alho\n");
+    printf(" 5. Camarao ao Alho\n");
 
     printf("\n======= Pratos Principais =======\n");
-    printf(" 1. Lasanha à Bolonhesa\n");
-    printf(" 2. Filé Mignon com Fritas\n");
+    printf(" 1. Lasanha a Bolonhesa\n");
+    printf(" 2. File Mignon com Fritas\n");
     printf(" 3. Frango Grelhado com Legumes\n");
-    printf(" 4. Bacalhau à Gomes de Sá\n");
+    printf(" 4. Bacalhau a Gomes de Sa\n");
     printf(" 5. Risoto de Cogumelos\n");
 
     printf("\n======= Sobremesas =======\n");

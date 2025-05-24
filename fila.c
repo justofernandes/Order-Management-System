@@ -40,7 +40,7 @@ void listarFila(Fila f) {
 
     while (atual != NULL) {
         if (atual->pratos != NULL) {
-            printf("Número do pedido: %d\n", atual->pratos->num_pedido);
+            printf("Numero do pedido: %d\n", atual->pratos->num_pedido);
             printf("Prato: %s\n", atual->pratos->nome);
         } else {
             printf("Pedido vazio.\n");

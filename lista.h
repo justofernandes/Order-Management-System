@@ -15,7 +15,7 @@ typedef struct Pedido {
 
 void inserir_no_inicio(Pedido **lista, Prato p);
 void exibir_lista(Pedido *lista);
-Prato criar_prato(int id, const char* nome_prato);
+Prato criar_prato(int* id, const char* nome_prato);
 
 //fila
 
