@@ -1,7 +1,26 @@
 //#include <locale.h>
 #include "cardapio.h"
 #include <stdio.h>
+#include <ctype.h>
+#include <strings.h>
 
+const char* pratos_cardapio[] = {
+    // Entradas
+    "Sopa de Cebola", "Salada Caesar", "Bruschetta", "Carpaccio de Carne", "Camarao ao Alho",
+    // Pratos Principais
+    "Lasanha a Bolonhesa", "File Mignon com Fritas", "Frango Grelhado com Legumes", "Bacalhau a Gomes de Sa", "Risoto de Cogumelos",
+    // Sobremesas
+    "Tiramisu", "Cheesecake de Frutas Vermelhas", "Mousse de Chocolate", "Pudim de Leite", "Sorvete de Baunilha com Calda de Morango"
+};
+int verificador_nome(const char* nome) {
+    int total = sizeof(pratos_cardapio) / sizeof(pratos_cardapio[0]);
+    for (int i = 0; i < total; i++) {
+        if (strcasecmp(nome, pratos_cardapio[i]) == 0) {
+            return 1; 
+        }
+    }
+    return 0; 
+}
 void exibir_cardapio() {
     //setlocale(LC_ALL, "");
     printf("\n ======= Entradas ======= \n");
