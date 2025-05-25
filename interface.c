@@ -6,7 +6,7 @@
 #include "cardapio.h"
 #include "lista.h"
 
-
+//Toda a lógica de funcionamento da interface. getchar() utilizado para manter as exibições na tela.
 void exibir_interface() {
 
     int opc_main_menu, opc_submenu1, opc_submenu2, num_pedido;
@@ -88,7 +88,7 @@ void exibir_interface() {
 
                             printf("\nFinalizando pedido e enviando para a cozinha...\n");
                             enviar_lista(lista_pedidos, &fila_cozinha);
-                            while (lista_pedidos)
+                            while (lista_pedidos) // -> Desaloca memória/exclui os elementos da lista (limpa ela)
                             {
                                Pedido *temp = lista_pedidos;
                                lista_pedidos = lista_pedidos ->prox;
@@ -101,7 +101,7 @@ void exibir_interface() {
 
                         case 5:
                             printf("\nVoltando ao menu principal...\n");
-                            while (lista_pedidos)
+                            while (lista_pedidos) // -> Desaloca memória/exclui os elementos da lista (limpa ela)
                             {
                                Pedido *temp = lista_pedidos;
                                lista_pedidos = lista_pedidos ->prox;
@@ -181,11 +181,13 @@ void exibir_interface() {
 
 }
 
+//Função pra limpar o buffer de entrada do teclado.
 void limparBuffer(void){
     char c;
     while ((c = getchar()) != '\n' && c != EOF);
 }
 
+//Verifica o sistema operacional, e aciona a limpeza correspondente.
 void limparTerminal() {
 #ifdef _WIN32
     system("cls");
