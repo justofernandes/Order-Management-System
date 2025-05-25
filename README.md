@@ -31,6 +31,12 @@ make
 ./atendimento
 ```
 
+# Ou
+
+```bash
+make teste
+```
+
 ## 📚 Tecnologias
 
 Linguagem C
