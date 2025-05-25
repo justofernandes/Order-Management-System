@@ -110,7 +110,7 @@ void exibir_interface() {
 
                 do {
                     printf("\n\tAcessar Cozinha\n");
-                    printf("\n\tEscolha uma opcao: \n\n1. Exibir cozinha\n2. Processar pedido\n3. --------\n4. Voltar ao menu principal\n\n");
+                    printf("\n\tEscolha uma opcao: \n\n1. Exibir cozinha\n2. Processar pedido\n3. Pedidos finalizados\n4. Voltar ao menu principal\n\n");
 
                     scanf("%d", &opc_submenu2);
                     limparBuffer();
