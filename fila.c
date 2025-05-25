@@ -2,11 +2,14 @@
 #include <string.h>
 #include "lista.h"
 
+
+//Define os ponteiros inicio e fim como NULL, indicando que a fila está vazia.
 void inicializarFila(Fila *f) {
     f->inicio = NULL;
     f->fim = NULL;
 }
 
+//Função responsável por colocar em ordem de fila os pedidos, onde cada novo pedido vai para o ultimo lugar da fia
 void enfileirar(Fila *f, Pedido *p) {
     p->prox = NULL;
     if (f->fim == NULL) {
@@ -16,7 +19,7 @@ void enfileirar(Fila *f, Pedido *p) {
         f->fim = p;
     }
 }
-
+//Remove e retorna o primeiro elemento da fila
 Pedido* desenfileirar(Fila *f) {
     if (f->inicio == NULL) return NULL;
     Pedido *removido = f->inicio;
@@ -26,10 +29,13 @@ Pedido* desenfileirar(Fila *f) {
     return removido;
 }
 
+//Verifica se a fila está vazia
 int filaVazia(Fila *f) {
     return f->inicio == NULL;
 }
 
+
+//Exibe todos os elementos presentes na fila.
 void listarFila(Fila f) {
     Pedido *atual = f.inicio;
     if (atual == NULL) {
@@ -47,7 +53,7 @@ void listarFila(Fila f) {
         atual = atual->prox;
     }
 }
-
+//copia os dados do prato do pedido, e insere na fila com enfileirar.
 void enviar_lista(Pedido *lista, Fila *fila) {
     Pedido *atual = lista;
     while (atual)

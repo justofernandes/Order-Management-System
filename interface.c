@@ -42,7 +42,7 @@ void exibir_interface() {
                     limparTerminal();
 
                     switch (opc_submenu1) {
-                        case 1:
+                        case 1:{
                             char nome_pedido[60];
                             printf("\n\tAdicionar prato\n");
                             printf("\nnumero do pedido: %d", num_pedido);
@@ -62,7 +62,7 @@ void exibir_interface() {
                                 break;
                             }
                             limparTerminal();
-                            break;
+                            break;}
 
                         case 2:
                             exibir_lista(lista_pedidos);
@@ -75,7 +75,7 @@ void exibir_interface() {
                             limparTerminal();
                             break;
 
-                        case 3:
+                        case 3: //Mostra a lista de pratos adicionados no atendimento atual.
                             exibir_lista(lista_pedidos);
                             getchar();
                             limparTerminal();
@@ -136,7 +136,7 @@ void exibir_interface() {
                             limparTerminal();
                             break;
 
-                        case 2:
+                        case 2: //remove o pedido mais antigo pelo desenfilerar
                             printf("\nProcessando pedido...\n");
                             Pedido *processado = desenfileirar(&fila_cozinha);
                             if (processado != NULL) {
