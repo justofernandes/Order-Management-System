@@ -3,6 +3,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+//Declarações das funções de lista.c
+
 typedef struct prato {
     char nome[100];
     int num_pedido;

@@ -12,6 +12,8 @@ const char* pratos_cardapio[] = {
     // Sobremesas
     "Tiramisu", "Cheesecake de Frutas Vermelhas", "Mousse de Chocolate", "Pudim de Leite", "Sorvete de Baunilha com Calda de Morango"
 };
+
+//Verifica se o prato digitaod é válido.
 int verificador_nome(const char* nome) {
     int total = sizeof(pratos_cardapio) / sizeof(pratos_cardapio[0]);
     for (int i = 0; i < total; i++) {
@@ -21,6 +23,8 @@ int verificador_nome(const char* nome) {
     }
     return 0; 
 }
+
+//Imprime o cardápio
 void exibir_cardapio() {
     printf("\n ======= Entradas ======= \n");
     printf("\n 1. Sopa de Cebola\n");
