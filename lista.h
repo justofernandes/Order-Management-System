@@ -31,6 +31,7 @@ void enfileirar(Fila *f, Pedido *p);
 Pedido* desenfileirar(Fila *f);
 int filaVazia(Fila *f);
 void listarFila(Fila f);
+void enviar_lista(Pedido *lista, Fila *fila);
 
 
 #endif

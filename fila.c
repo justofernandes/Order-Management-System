@@ -47,3 +47,26 @@ void listarFila(Fila f) {
         atual = atual->prox;
     }
 }
+
+void enviar_lista(Pedido *lista, Fila *fila) {
+    Pedido *atual = lista;
+    while (atual)
+    {
+       Pedido *novo= malloc(sizeof(Pedido));
+       if(novo){
+        novo->pratos= malloc(sizeof(Prato));
+        if(novo->pratos){
+            strcpy(novo->pratos->nome, atual->pratos->nome);
+            novo->pratos->num_pedido = atual->pratos->num_pedido;
+            novo->prox=NULL;
+            enfileirar(fila, novo);
+    
+        }else{
+            free(novo);
+        }
+        atual= atual->prox;
+       }
+
+    }
+    
+}
