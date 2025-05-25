@@ -1,5 +1,6 @@
 #include "lista.h"
 #include <stdio.h>
+#include <string.h>
 
 Prato criar_prato(int id, const char* nome_prato) {
     Prato novo_prato;
@@ -57,6 +58,38 @@ void exibir_pedidos_finalizados(Pedido *lista) {
         printf("Pedido %d - %s\n", lista->pratos->num_pedido, lista->pratos->nome);
         lista = lista->prox;
     }
+}
+
+void remover_elemento_lista(Pedido **lista, char* nome_elemento) {
+    
+    if(*lista == NULL) {
+        printf("lista vazia!\n");
+        return;
+    }
+
+    Pedido *anterior = NULL;
+    Pedido *atual = *lista;
+
+    while (atual != NULL && (strcmp(atual->pratos->nome, nome_elemento) != 0)) {
+        anterior = atual;
+        atual = atual->prox;
+    }
+
+    if(atual == NULL) {
+        printf("Valor inexistente na lista!\n");
+        return;
+    }
+
+    if(anterior == NULL) {
+        *lista = atual->prox;
+    }
+    else {
+        anterior->prox = atual->prox;
+    }
+
+    free(atual->pratos);
+    free(atual);
+
 }
 
 

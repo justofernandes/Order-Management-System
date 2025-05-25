@@ -23,7 +23,7 @@ void exibir_interface() {
     do { 
 
         printf("\n---------- INTERFACE MENU ----------\n\n");
-        printf("Escolha uma opcao: \n\n1. Realizar Atendimento\n2. Acessar Cozinha\n3. Fechar Programa\n\n");
+        printf("\tEscolha uma opcao: \n\n1. Realizar Atendimento\n2. Acessar Cozinha\n3. Fechar Programa\n\n");
 
         scanf("%d", &opc_main_menu);
         limparBuffer();
@@ -51,18 +51,23 @@ void exibir_interface() {
                             //limparBuffer();
                             fgets(nome_pedido, sizeof(nome_pedido), stdin);
                             nome_pedido[strcspn(nome_pedido, "\n")] = '\0'; //Identifica se há quebra de liha. Caso houver, substitui pelo final da string.
-                           if(verificador_nome(nome_pedido)){
-                            Prato prato_entrada = criar_prato(num_pedido, nome_pedido);
-                            inserir_no_inicio(&lista_pedidos, prato_entrada);
-                           }
-                            else{
+                            
+                            if(verificador_nome(nome_pedido)) {
+                                Prato prato_entrada = criar_prato(num_pedido, nome_pedido);
+                                inserir_no_inicio(&lista_pedidos, prato_entrada);
+                            }
+                            else {
                                 printf("Prato nao consta no cardapio!\n");
                                 break;
                             }
                             break;
 
                         case 2:
-                            //Remover prato.
+                            char nome_pedido_excluir[60];
+                            printf("\nIndique qual prato deseja excluir: \n");
+                            fgets(nome_pedido_excluir, sizeof(nome_pedido_excluir), stdin);
+                            nome_pedido_excluir[strcspn(nome_pedido_excluir, "\n")] = '\0'; //Identifica se há quebra de liha. Caso houver, substitui pelo final da string.
+                            remover_elemento_lista(&lista_pedidos, nome_pedido_excluir);
                             break;
 
                         case 3:

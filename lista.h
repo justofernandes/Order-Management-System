@@ -18,6 +18,7 @@ void exibir_lista(Pedido *lista);
 Prato criar_prato(int id, const char* nome_prato);
 void adicionar_pedido_finalizado(Pedido **lista, Pedido *pedido);
 void exibir_pedidos_finalizados(Pedido *lista);
+void remover_elemento_lista(Pedido **lista, char* nome_elemento);
 
 //fila
 
