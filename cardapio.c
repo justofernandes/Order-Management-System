@@ -22,7 +22,6 @@ int verificador_nome(const char* nome) {
     return 0; 
 }
 void exibir_cardapio() {
-    //setlocale(LC_ALL, "");
     printf("\n ======= Entradas ======= \n");
     printf("\n 1. Sopa de Cebola\n");
     printf(" 2. Salada Caesar\n");
