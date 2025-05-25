@@ -7,9 +7,6 @@
 #include "lista.h"
 
 
-//void atendimento_pedidos();
-void limparBuffer(void);
-void enviar_lista(Pedido *lista, Fila *fila);
 void exibir_interface() {
 
     int opc_main_menu, opc_submenu1, opc_submenu2, num_pedido;
@@ -35,20 +32,19 @@ void exibir_interface() {
                 limparBuffer();
                 do {
 
-                    printf("\nEscolhido: Realizar o atendimento\n");
-                    printf("\nEscolha uma opcao: \n\n1. Adicionar prato\n2. Remover prato\n3. Mostrar pedido\n4. Finalizar pedido\n5. Voltar ao menu principal\n\n");
+                    printf("\n\t Realizar o atendimento\n");
+                    printf("\n\tEscolha uma opcao: \n\n1. Adicionar prato\n2. Remover prato\n3. Mostrar pedido\n4. Finalizar pedido\n5. Voltar ao menu principal\n\n");
 
                     scanf("%d", &opc_submenu1);
                     limparBuffer();
 
                     switch (opc_submenu1) {
                         case 1:
-                            printf("\nAdicionar prato\n");
-                            printf("nummero do pedido: %d", num_pedido);
-                            exibir_cardapio();
                             char nome_pedido[60];
-                            printf("\nInserir nome do pedido: \n");
-                            //limparBuffer();
+                            printf("\n\tAdicionar prato\n");
+                            printf("numero do pedido: %d", num_pedido);
+                            exibir_cardapio();
+                            printf("\nInserir pedido: \n");
                             fgets(nome_pedido, sizeof(nome_pedido), stdin);
                             nome_pedido[strcspn(nome_pedido, "\n")] = '\0'; //Identifica se há quebra de liha. Caso houver, substitui pelo final da string.
                             
@@ -75,7 +71,7 @@ void exibir_interface() {
                             break;
                         case 4:
                             if(lista_pedidos == NULL){
-                                printf("\nLista vazia!\nNao eh possivel enviar a lista vazia!\n");
+                                printf("\nLista vazia!\n\nNao eh possivel enviar a lista vazia!\n");
                                 break;
                             }
 
@@ -93,7 +89,7 @@ void exibir_interface() {
                             break;
 
                         case 5:
-                            printf("\nEscolhido opc: Voltar ao menu principal\n");
+                            printf("\nVoltando ao menu principal...\n");
                             while (lista_pedidos)
                             {
                                Pedido *temp = lista_pedidos;
@@ -104,7 +100,7 @@ void exibir_interface() {
                             break;
                     
                         default:
-                            printf("\nOpc invalida!\n");
+                            printf("\nOpcao invalida!\n");
                     }
 
                 } while(opc_submenu1 != 5);
@@ -113,15 +109,15 @@ void exibir_interface() {
             case 2:
 
                 do {
-                    printf("\nEscolhido: Acessar Cozinha\n");
-                    printf("\nEscolha uma opcao: \n\n1. Exibir cozinha\n2. Processar pedido\n3. --------\n4. Voltar ao menu principal\n\n");
+                    printf("\n\tAcessar Cozinha\n");
+                    printf("\n\tEscolha uma opcao: \n\n1. Exibir cozinha\n2. Processar pedido\n3. --------\n4. Voltar ao menu principal\n\n");
 
                     scanf("%d", &opc_submenu2);
                     limparBuffer();
 
                     switch (opc_submenu2) {
                         case 1:
-                            printf("\nCozinha:\n");
+                            printf("\n\tCozinha:\n\n");
                             listarFila(fila_cozinha);
                             break;
 

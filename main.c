@@ -23,11 +23,7 @@ void configurar_localidade_terminal() {
         printf("Terminal configurado para UTF-8 no Windows.\n");
     }
 
-    // Dica: Se quiser também mudar a entrada para UTF-8, pode descomentar:
-    // SetConsoleCP(CP_UTF8);
-
 #else
-    // No Linux, normalmente já está em UTF-8
     printf("Sistema Linux/macOS: terminal geralmente já está em UTF-8.\n");
 #endif
 }
