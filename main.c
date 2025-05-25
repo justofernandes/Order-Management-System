@@ -5,7 +5,7 @@
 
 int main() {
 
-    void configurar_localidade_terminal();
+    limparTerminal();
 
     exibir_interface();
 

@@ -40,7 +40,7 @@ void exibir_lista(Pedido *lista) {
         lista = lista->prox;
         ++indice;
     }
-    printf("\n\n");
+    printf("\n");
     
 }
 void adicionar_pedido_finalizado(Pedido **lista, Pedido *pedido) {
@@ -50,10 +50,10 @@ void adicionar_pedido_finalizado(Pedido **lista, Pedido *pedido) {
 
 void exibir_pedidos_finalizados(Pedido *lista) {
     if (!lista) {
-        printf("Nenhum pedido finalizado.\n");
+        printf("\nNenhum pedido finalizado.\n");
         return;
     }
-    printf("\n=== Pedidos Finalizados ===\n");
+    printf("\n=== Pedidos Finalizados ===\n\n");
     while (lista) {
         printf("Pedido %d - %s\n", lista->pratos->num_pedido, lista->pratos->nome);
         lista = lista->prox;

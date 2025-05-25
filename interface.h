@@ -3,5 +3,6 @@
 
 void exibir_interface();
 void limparBuffer(void);
+void limparTerminal();
 
 #endif
