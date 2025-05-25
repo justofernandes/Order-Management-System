@@ -69,6 +69,11 @@ void exibir_interface() {
                              exibir_lista(lista_pedidos);
                             break;
                         case 4:
+                            if(lista_pedidos == NULL){
+                                printf("\nLista vazia!\nNao eh possivel enviar a lista vazia!\n");
+                                break;
+                            }
+
                             printf("\nFinalizando pedido e enviando para a cozinha...\n");
                             enviar_lista(lista_pedidos, &fila_cozinha);
                             while (lista_pedidos)
@@ -84,6 +89,13 @@ void exibir_interface() {
 
                         case 5:
                             printf("\nEscolhido opc: Voltar ao menu principal\n");
+                            while (lista_pedidos)
+                            {
+                               Pedido *temp = lista_pedidos;
+                               lista_pedidos = lista_pedidos ->prox;
+                               free(temp->pratos);
+                               free(temp);
+                            }
                             break;
                     
                         default:
@@ -104,12 +116,11 @@ void exibir_interface() {
 
                     switch (opc_submenu2) {
                         case 1:
-                            printf("\nEscolhido opc: 1\n");
+                            printf("\nCozinha:\n");
                             listarFila(fila_cozinha);
                             break;
 
                         case 2:
-                            printf("\nEscolhido opc: 2\n");
                             printf("\nProcessando pedido...\n");
                             Pedido *processado = desenfileirar(&fila_cozinha);
                             if (processado != NULL) {
@@ -123,11 +134,10 @@ void exibir_interface() {
 
                         case 3:
                             exibir_pedidos_finalizados(pedidos_finalizados);
-                            printf("\nEscolhido opc: 3\n");
                             break;
 
                         case 4:
-                            printf("\nEscolhido opc: Voltar ao menu principal\n");
+                            printf("\nVoltando ao menu principal...\n");
                             break;
                     
                         default:
@@ -138,7 +148,7 @@ void exibir_interface() {
                 break;
 
             case 3:
-                printf("Escolhido: Sair do menu\n");
+                printf("Fechando o programa...\n");
                 break;
         
             default:
